@@ -1,0 +1,117 @@
+/* ==============================================================================
+   [Vanilla CSS3] Global Reset & Box-Sizing
+   USE: Resets default margin/padding and sets box-sizing to border-box.
+   WHY: Ensures padding and borders are included in element's total width and height,
+        preventing layout calculation bugs.
+   ============================================================================== */
+* {
+    box-sizing: border-box; /* Includes padding and border in element dimensions */
+    margin: 0;              /* Removes default browser margins */
+    padding: 0;             /* Removes default browser paddings */
+}
+
+/* ==============================================================================
+   [Vanilla CSS3] Body Layout & Styling
+   USE: Sets background color and uses Flexbox to center registration card on viewport.
+   WHY: min-height: 100vh + flexbox ensures card is perfectly centered horizontally & vertically.
+   ============================================================================== */
+body {
+    font-family: Arial, sans-serif; /* Clean, cross-platform sans-serif typography */
+    background: #f4f7fb;            /* Subtle light-blue-grey background for modern look */
+
+    display: flex;                  /* Enables CSS Flexbox layout */
+    justify-content: center;        /* Centers child container horizontally */
+    align-items: center;            /* Centers child container vertically */
+
+    min-height: 100vh;              /* Takes 100% of the browser viewport height */
+}
+
+/* ==============================================================================
+   [Vanilla CSS3] Responsive Container Wrapper
+   USE: Restricts the card width so it looks great on both mobile and wide screens.
+   ============================================================================== */
+.container {
+    width: 100%;
+    max-width: 450px;               /* Limits form card width to a readable 450px */
+    padding: 20px;
+}
+
+/* ==============================================================================
+   [Vanilla CSS3] Card Component
+   USE: White surface card with rounded corners and subtle elevation drop-shadow.
+   ============================================================================== */
+.card {
+    background: white;
+    padding: 35px;
+    border-radius: 16px;            /* Smooth rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft drop shadow for floating effect */
+}
+
+/* [Vanilla CSS3] Header Typography */
+h1 {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+/* [Vanilla CSS3] Subtitle Typography */
+.subtitle {
+    text-align: center;
+    color: #666;                    /* Muted grey color for secondary text */
+    margin-bottom: 25px;
+}
+
+/* [Vanilla CSS3] Form Field Labels */
+label {
+    display: block;                 /* Takes full line above its input */
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: 600;               /* Semi-bold text for clear readability */
+}
+
+/* [Vanilla CSS3] Form Input Controls */
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;             /* Rounded input borders */
+    font-size: 15px;
+}
+
+/* [Vanilla CSS3] Input Focus State (:focus Pseudo-Class) */
+/* USE: Highlights input with blue border when user clicks into the field */
+input:focus {
+    outline: none;                  /* Removes ugly default browser outline */
+    border-color: #2563eb;          /* Vibrant royal blue accent border */
+}
+
+/* [Vanilla CSS3] Register Button Styling */
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;            /* Royal blue call-to-action */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;                /* Changes cursor to hand pointer on hover */
+}
+
+/* [Vanilla CSS3] Button Hover State (:hover Pseudo-Class) */
+button:hover {
+    background: #1d4ed8;            /* Slightly darker blue for tactile feedback */
+}
+
+/* [Vanilla CSS3] Button Disabled State (:disabled Pseudo-Class) */
+/* USE: Visual feedback when button is disabled during API network request */
+button:disabled {
+    opacity: 0.6;                   /* Muted transparency */
+    cursor: not-allowed;            /* Displays 'not allowed' cursor */
+}
+
+/* [Vanilla CSS3] Feedback Message Area */
+#message {
+    margin-top: 18px;
+    text-align: center;
+    font-weight: 600;
+}

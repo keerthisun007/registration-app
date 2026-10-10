@@ -1,0 +1,114 @@
+<!-- [HTML5] Document type declaration: Informs browser to render using modern HTML5 standard -->
+<!DOCTYPE html>
+<!-- [HTML5] Root element of the web page with English language attribute -->
+<html lang="en">
+
+<head>
+    <!-- [HTML5] Character encoding: UTF-8 supports global character sets and symbols -->
+    <meta charset="UTF-8">
+    <!-- [HTML5 Viewport Meta] Makes the page responsive across desktop, tablet, and mobile screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- [HTML5 Title] Appears on browser tab title bar -->
+    <title>Registration Form</title>
+
+    <!-- [HTML5 Link] Connects external Vanilla CSS stylesheet (style.css) for visual styling -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- [HTML5 div] Outer wrapper container: Used by CSS flexbox to center content on screen -->
+    <div class="container">
+
+        <!-- [HTML5 div] Card component: Provides the clean white box with drop-shadow container -->
+        <div class="card">
+
+            <!-- [HTML5 Heading 1] Main page heading -->
+            <h1>Create Account</h1>
+
+            <!-- [HTML5 Paragraph] Subtitle description for the card -->
+            <p class="subtitle">
+                Register your account
+            </p>
+
+            <!-- 
+              [HTML5 Form] 
+              USE: Groups interactive form controls together.
+              WHY: 'id="registrationForm"' allows script.js to attach a submit event listener.
+            -->
+            <form id="registrationForm">
+
+                <!-- [HTML5 Label & Text Input] Full Name -->
+                <!-- USE: Captures user's full name. 'required' enforces browser-level validation before submitting -->
+                <label for="name">Full Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <!-- [HTML5 Label & Email Input] Email -->
+                <!-- USE: 'type="email"' makes browser verify basic '@' structure -->
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <!-- [HTML5 Label & Tel Input] Phone Number -->
+                <!-- USE: 'type="tel"' with maxlength="10" restricts user input to 10 digits -->
+                <label for="phone">Phone Number</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="10-digit mobile number"
+                    maxlength="10"
+                    required
+                >
+
+                <!-- [HTML5 Label & Password Input] Password -->
+                <!-- USE: 'type="password"' masks typed characters with dots for confidentiality -->
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Minimum 8 characters"
+                    required
+                >
+
+                <!-- [HTML5 Label & Password Input] Confirm Password -->
+                <!-- USE: Allows user to re-enter password to catch typos before submission -->
+                <label for="confirmPassword">
+                    Confirm Password
+                </label>
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Re-enter password"
+                    required
+                >
+
+                <!-- [HTML5 Button] Submit button: Triggers form 'submit' event handled in script.js -->
+                <button type="submit" id="registerButton">
+                    Register
+                </button>
+
+                <!-- [HTML5 div] Message container: Dynamic feedback placeholder populated by script.js (green for success, red for errors) -->
+                <div id="message"></div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- [HTML5 Script] Connects external JavaScript file (script.js) at end of body so DOM is loaded before execution -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
