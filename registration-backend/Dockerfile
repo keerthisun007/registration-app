@@ -7,13 +7,15 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
+# Copy Maven mirror settings to bypass HTTP 429 rate limits
+COPY settings.xml .
 # Copy pom.xml and download dependencies
 COPY pom.xml .
 # Copy project source code
 COPY src ./src
 
-# Compile and package Spring Boot executable JAR file
-RUN mvn clean package -DskipTests
+# Compile and package Spring Boot executable JAR file using Google Maven mirror
+RUN mvn clean package -DskipTests -s settings.xml
 
 # Stage 2: Production Runtime
 FROM eclipse-temurin:17-jre
