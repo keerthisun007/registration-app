@@ -37,9 +37,13 @@ public class RegisterRequest {
     )
     private String phone; // [Core Java String]
 
-    // [Jakarta Validation @NotBlank + @Size]: Enforces password length (min 8 chars, max 72 chars for BCrypt)
+    // [Jakarta Validation @NotBlank + @Size + @Pattern]: Enforces password length and complexity
     @NotBlank(message = "Password is required")
     @Size(min = 8, max = 72, message = "Password must be 8 to 72 characters")
+    @Pattern(
+        regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$",
+        message = "Password must contain at least one uppercase letter, one lowercase letter, and one digit"
+    )
     private String password; // [Core Java String]
 
     // [Jakarta Validation @NotBlank]: Enforces confirm password field is not empty

@@ -50,9 +50,13 @@ public class User {
     @Column(nullable = false, length = 100)
     private String password; // [Core Java String]
 
-    // [Hibernate / JPA @Column]: Maps to MySQL DATETIME(6) NOT NULL
-    @Column(nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.now(); // [Core Java LocalDateTime]
+    // [Hibernate / JPA @Column]: Maps to MySQL DATETIME(6) NOT NULL (Immutable creation timestamp)
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    // [Hibernate / JPA @Column]: Maps to MySQL DATETIME(6) NOT NULL (Updated on every change)
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
 
     /**
      * Default No-Args Constructor
@@ -74,7 +78,22 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.password = password;
-        this.createdAt = LocalDateTime.now(); // [Core Java] Automatically captures current server timestamp
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        LocalDateTime now = LocalDateTime.now();
+        if (this.createdAt == null) {
+            this.createdAt = now;
+        }
+        if (this.updatedAt == null) {
+            this.updatedAt = now;
+        }
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
     }
 
     // [Core Java] Getters and Setters: Standard Java encapsulation methods to read and write private fields
@@ -116,5 +135,17 @@ public class User {
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

@@ -90,12 +90,47 @@
         </dependency>
 
         <!-- 
+          [Spring Boot Actuator]
+          USE: Exposes production-ready monitoring endpoints (/actuator/health, /actuator/metrics).
+          WHY: Enables cloud platforms (Docker, Kubernetes, Render) to monitor uptime and health probes.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- 
+          [Flyway Database Migrations]
+          USE: Version-controlled, repeatable SQL database schema migrations.
+          WHY: Replaces unstable 'hibernate.ddl-auto=update' with deterministic, production-safe migrations.
+        -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-mysql</artifactId>
+        </dependency>
+
+        <!-- 
           [JUnit 5 & Mockito / Spring Boot Test]
           USE: Testing framework for writing automated unit and integration tests.
         -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 
+          [H2 In-Memory Database]
+          USE: Lightweight in-memory database used exclusively for automated test suites.
+          WHY: Allows unit and integration tests to run fast in CI/CD without needing a live MySQL server.
+        -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
 
