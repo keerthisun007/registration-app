@@ -1,0 +1,12 @@
+{
+  "name": "registration-app",
+  "version": "1.0.0",
+  "description": "User registration application with frontend and Spring Boot backend",
+  "main": "serve.js",
+  "scripts": {
+    "start": "node serve.js"
+  },
+  "keywords": ["registration", "spring-boot", "javascript", "fullstack"],
+  "author": "",
+  "license": "ISC"
+}
