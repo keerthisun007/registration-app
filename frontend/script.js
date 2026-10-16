@@ -139,7 +139,7 @@ form.addEventListener("submit", async function (event) {
 
         const baseUrl = window.API_BASE_URL || (isLocal
             ? "http://localhost:8080"
-            : "https://YOUR-RENDER-BACKEND-URL.onrender.com");
+            : "https://registration-backend-pcxx.onrender.com");
 
         const response = await fetch(`${baseUrl}/api/users/register`, {
             method: "POST",
